@@ -33,18 +33,18 @@ class RegisterView(GenericAPIView):
             except EmailNotValidError as e:
                 # print(str(e))
                 return Response({"message": "Provide a valid email "}, status=status.HTTP_400_BAD_REQUEST)
-            # if len_pass <= 5:
-            #     return Response({"message": "Password must be at least 5 character !!! "},
+            if len_pass <= 5:
+                return Response({"message": "Password must be at least 5 character"},
+                                status=status.HTTP_400_BAD_REQUEST)
+            # if len_name <= 5:
+            #     return Response({"message": "Name must be at least 5 character !!! "},
             #                     status=status.HTTP_400_BAD_REQUEST)
-            # # if len_name <= 5:
-            # #     return Response({"message": "Name must be at least 5 character !!! "},
-            # #                     status=status.HTTP_400_BAD_REQUEST)
-            # if len_first <= 1:
-            #     return Response({"message": "First name must be at least 2 character !!! "},
-            #                     status=status.HTTP_400_BAD_REQUEST)
-            # if len_last <= 1:
-            #     return Response({"message": "Last name must be at least 2 character !!! "},
-            #                     status=status.HTTP_400_BAD_REQUEST)
+            if len_first <= 1:
+                return Response({"message": "First name must be at least 2 character"},
+                                status=status.HTTP_400_BAD_REQUEST)
+            if len_last <= 1:
+                return Response({"message": "Last name must be at least 2 character"},
+                                status=status.HTTP_400_BAD_REQUEST)
 
         except:
             return Response({"message": "check whether firstname, lastname,email or password missing"},status=status.HTTP_400_BAD_REQUEST)
@@ -70,8 +70,8 @@ class RegisterView(GenericAPIView):
         serializer = UserSerializer(data=user_data_dic)
         if serializer.is_valid():
             serializer.save()
-            import time
-            time.sleep(3) # Sleep for 3 seconds
+            # import time
+            # time.sleep(2) # Sleep for 3 seconds
             return Response({
                 "true":1,
                 "message":"Account created with "+user_data_dic.get('email'),
@@ -190,3 +190,15 @@ def get_data_of_user(request):
         return Response(user_name, status=status.HTTP_200_OK)
     except:
         return Response({"message": "Token was not valid"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+# @csrf_exempt
+@api_view(['GET'])
+def logout(request):
+    # this is for blacklist using again will prevent
+    # token = RefreshToken(request.COOKIES.get('refresh'))
+    # token.blacklist()
+    response = Response({"message": "You are logout"}, status=status.HTTP_200_OK)
+    response.delete_cookie('refresh')
+    return response

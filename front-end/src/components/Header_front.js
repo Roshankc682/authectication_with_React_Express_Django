@@ -35,7 +35,6 @@ const Header_front = () => {
 
 
 useEffect(() => {
-  console.log("yes run after few second ")
     if(setJwt != null){
     const interval = setInterval(() => {
       axios.get(backend_url+'/api/token/token_refresh',{ headers: {'Authorization': `Bearer ${setJwt}`},withCredentials: true})
@@ -53,14 +52,15 @@ useEffect(() => {
               // console.log(error)
               UpdatesetJwt(null);
           })
-    }, 27000);
+    }, 270000);
     return () => clearInterval(interval);
   }
   
   }, [setJwt]);
 
 
-    const _image_name_ = "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=6&m=1223671392&s=612x612&w=0&h=NGxdexflb9EyQchqjQP0m6wYucJBYLfu46KCLNMHZYM="
+    // const _image_name_ = "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=6&m=1223671392&s=612x612&w=0&h=NGxdexflb9EyQchqjQP0m6wYucJBYLfu46KCLNMHZYM="
+    const _image_name_ = "http://localhost/admin/image/admin.jpg"
     return (
         <>
             {
