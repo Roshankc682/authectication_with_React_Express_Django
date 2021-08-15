@@ -92,7 +92,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-@api_view(['POST'])
+@api_view(['GET'])
 def new_access_token(request):
     try:
         if request.COOKIES.get('refresh'):

@@ -11,24 +11,27 @@ import Logout from "./Logout";
 
 const Header_front = () => {
     const [setJwt, UpdatesetJwt] = useState(null);
-    const backend_url = "http://localhost:1337";
+    const backend_url = "http://localhost:8000";
 
-     
     useEffect(() => {
-        axios.post(backend_url+'/api/token/refresh/',{payload: null},{withCredentials: true})
-        .then((respose) => {
-                  try{
-                        UpdatesetJwt(respose.data["access"]);
-                    }catch(e){
-                        UpdatesetJwt(null);
-                    }
-            })
-            .catch((error) => {
-                    try{
-                        UpdatesetJwt(null);
-                    }catch(e){}
-            })
-  },[]);
+        axios.get(backend_url+'/api/token/refresh',{ withCredentials: true })
+     .then((respose) => {
+       // console.log(res.data)
+       try{
+         UpdatesetJwt(respose.data["access"]);
+        //  _call_with_response_(respose.data["access"])
+       }catch(e)
+       {
+          UpdatesetJwt(null);
+       }
+     })
+     .catch((error) => {
+       // console.error(error)
+       UpdatesetJwt(null);
+       // window.location.href = '/login';
+     })
+ 
+},[]);
 
 
     const _image_name_ = "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=6&m=1223671392&s=612x612&w=0&h=NGxdexflb9EyQchqjQP0m6wYucJBYLfu46KCLNMHZYM="

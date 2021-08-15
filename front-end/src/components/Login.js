@@ -26,13 +26,13 @@ const Login = () => {
         axios.post(backend_url+'/api/login',{
             email:email,
             password:password,
-          })
+          },{ withCredentials: true })
           .then((response) => {
             try{
                Updateerrorsetresponse(null)
                UpdatesetJwt(response.data["access"]);
             //    console.log(response.data["access"])
-              //  window.location.href = '/home';
+               window.location.href = '/home';
             }catch(e){
               Updateerrorsetresponse("something went wrong")
             }

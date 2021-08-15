@@ -47,7 +47,7 @@ app.post("/api/login",(req, res)=> {
                 {
                 // samesite="none", secure=True, httponly=True)
                   // res.cookie('refresh',data.refresh, { maxAge: 900000 ,sameSite: true,secure: true ,httpOnly: true,path:"/"})
-                  res.cookie('refresh',data.refresh, { maxAge: 900000 ,httpOnly: true})
+                  res.cookie('refresh',data.refresh, { sameSite: "none",secure: true,httpOnly: true})
                 }else{
                   return res.status(401).json({"message": "There was no credentials found !!! "})
                 }
