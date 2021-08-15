@@ -69,26 +69,26 @@ app.post("/api/login",(req, res)=> {
 })
 
 
-app.use(cors({
-  credentials: true,
-  origin: "http://localhost:3000"
-}));
-app.post("/api/token/refresh",(req, res)=> {
-  // console.log(req)
-    if(req.method)
-    {  
-      if(!req.cookies){
-        return res.status(400).json({ "message": 'Something went wrong !!!'});
-      }else
-      {
-        console.log("test")
-        return res.status(200).json({ "message": 'Awsome'});
-      }
-    }else{
-      res.setHeader('Allow',['POST']);
-      return res.status(405).json({"message": `Method ${req.method} not allowed`})
-  }
-})
+// app.use(cors({
+//   credentials: true,
+//   origin: "http://localhost:3000"
+// }));
+// app.post("/api/token/refresh",(req, res)=> {
+//   // console.log(req)
+//     if(req.method)
+//     {  
+//       if(!req.cookies){
+//         return res.status(400).json({ "message": 'Something went wrong !!!'});
+//       }else
+//       {
+//         console.log("test")
+//         return res.status(200).json({ "message": 'Awsome'});
+//       }
+//     }else{
+//       res.setHeader('Allow',['POST']);
+//       return res.status(405).json({"message": `Method ${req.method} not allowed`})
+//   }
+// })
 
 app.listen(port, ()=> 
 {
