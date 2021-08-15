@@ -4,49 +4,28 @@ import axios from 'axios'
 
 const Dashboard = () => {
 
-  const backend_url = "http://localhost:8000";
   const [setJwt, UpdatesetJwt] = useState(null);
+  const backend_url = "http://localhost:8000";
 
   useEffect(() => {
-    axios.post(backend_url+'/api/access/refresh/',{payload:null},{ withCredentials: true })
-        .then((respose) => {
-        // console.log(res.data)
-              try{
-                    UpdatesetJwt(respose.data["access"]);
-                }catch(e){
-                    UpdatesetJwt(null);
-                }
-        })
-        .catch((error) => {
-                try{
-                    UpdatesetJwt(null);
-                }catch(e){}
-        })
-},[]);
-useEffect(() => {
-  
-  if(setJwt != null){
-  const interval = setInterval(() => {
-    axios.get(backend_url+'/api/token/new/',{ headers: {'Authorization': `Bearer ${setJwt}`},withCredentials: true})
-        .then((respose) => {
-          // console.log(respose.data)
-          try{
-          UpdatesetJwt(respose.data["access"]);
-          }catch(e)
-          {
-             UpdatesetJwt(null);
-          }
-          
-        })
-        .catch((error) => {
-            // console.log(error)
-            UpdatesetJwt(null);
-        })
-  }, 270000);
-  return () => clearInterval(interval);
-}
+      axios.get(backend_url+'/api/token/refresh',{ withCredentials: true })
+   .then((respose) => {
+     // console.log(res.data)
+     try{
+       UpdatesetJwt(respose.data["access"]);
+      //  _call_with_response_(respose.data["access"])
+     }catch(e)
+     {
+        UpdatesetJwt(null);
+     }
+   })
+   .catch((error) => {
+     UpdatesetJwt(null);
+     // window.location.href = '/login';
+   })
 
-}, [setJwt]);
+},[]);
+
 
 return (
   <>
