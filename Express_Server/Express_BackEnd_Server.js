@@ -46,8 +46,6 @@ app.post("/api/login",(req, res)=> {
                 if(data.refresh)
                 {
                 // samesite="none", secure=True, httponly=True)
-                // var randomNumber=Math.random().toString();
-                // res.cookie('cookieName',randomNumber, { maxAge: 900000});
                   // res.cookie('refresh',data.refresh, { maxAge: 900000 ,sameSite: true,secure: true ,httpOnly: true,path:"/"})
                   res.cookie('refresh',data.refresh, { maxAge: 900000 ,httpOnly: true})
                 }else{
