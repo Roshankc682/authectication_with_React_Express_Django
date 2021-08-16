@@ -113,9 +113,9 @@ return(
                     <center>{setresponse}<br></br><br></br>
                          
                         <Link to="/login">
-                            <h6>
+                            {/* <h6> */}
                             <MDBBtn>Now you can login</MDBBtn>
-                            </h6>
+                            {/* </h6> */}
                         </Link> </center>
                     </MDBCardText>
                     </MDBCardBody>

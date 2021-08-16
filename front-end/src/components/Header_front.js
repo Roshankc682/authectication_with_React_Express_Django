@@ -59,8 +59,8 @@ useEffect(() => {
   }, [setJwt]);
 
 
-    // const _image_name_ = "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=6&m=1223671392&s=612x612&w=0&h=NGxdexflb9EyQchqjQP0m6wYucJBYLfu46KCLNMHZYM="
-    const _image_name_ = "http://localhost/admin/image/admin.jpg"
+    const _image_name_ = "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=6&m=1223671392&s=612x612&w=0&h=NGxdexflb9EyQchqjQP0m6wYucJBYLfu46KCLNMHZYM="
+    // const _image_name_ = "http://localhost/admin/image/admin.jpg"
     return (
         <>
             {
@@ -70,7 +70,7 @@ useEffect(() => {
                 <Navbar bg="light" expand="sm">
                 <Container>
                 <Nav>
-                    <Link className="" to="/home"><img src="/favicon.ico" alt='Opps something went wrong' widht='40px' height='40px;'/></Link>
+                    <Link className="" to="/home"><img src="/favicon.ico" alt='Opps something went wrong' width='40px' height='40px;'/></Link>
                 </Nav>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -99,7 +99,7 @@ useEffect(() => {
             <BrowserRouter>
                 <Navbar bg="light" expand="sm">
                 <Container>
-                <Nav><Link className="" to="/home"><img className="avatar" src={_image_name_} alt='Opps something went wrong' widht='50px' height='50px;'/></Link></Nav>
+                <Nav><Link className="" to="/home"><img className="avatar" src={_image_name_} alt='Opps something went wrong' width='50px' height='50px;'/></Link></Nav>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
