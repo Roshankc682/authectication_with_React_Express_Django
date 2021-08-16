@@ -1,4 +1,4 @@
-##Authentication with jwt token as httponly cookie with React + Express + Django
+# Authentication with jwt token as httponly cookie with React + Express + Django
 
 
 ### In CMD with django virtual enviroment Go to back_end_django folder and RUN
