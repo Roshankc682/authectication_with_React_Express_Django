@@ -7,6 +7,12 @@ from .serializers import UserSerializer, MyTokenObtainPairSerializer, Obtain_Ref
 from django.core.mail import EmailMultiAlternatives
 from auth_jwt.models import Users
 from email_validator import validate_email , EmailNotValidError
+import io
+from rest_framework.parsers import JSONParser
+import base64
+import json
+
+
 
 
 
